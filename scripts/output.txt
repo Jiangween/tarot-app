@@ -1,0 +1,487 @@
+/home/devbox/project/tarot-app/src/app/api/cards/[id]/image/route.ts:
+import { NextResponse } from 'next/server';
+import path from 'path';
+import fs from 'fs/promises';
+
+// 添加辅助函数来获取实际的卡牌信息
+function getCardInfo(cardId: number, deck: any) {
+    if (cardId <= 21) {  // 修改为21，因为大阿尔卡纳是0-21
+        return deck.major.find((c: any) => c.id === cardId);
+    }
+    
+    let suit: string;
+    let localId: number;
+    
+    if (cardId >= 22 && cardId <= 35) {
+        suit = 'wands';
+        localId = cardId - 21;  // 修改为21，使得第一张牌id为1
+    } else if (cardId >= 36 && cardId <= 49) {
+        suit = 'cups';
+        localId = cardId - 35;
+    } else if (cardId >= 50 && cardId <= 63) {
+        suit = 'swords';
+        localId = cardId - 49;
+    } else {
+        suit = 'pentacles';
+        localId = cardId - 63;
+    }
+    
+    return deck.minor[suit].find((c: any) => c.id === localId);
+}
+
+export async function GET(
+    request: Request,
+    { params }: { params: { id: string } }  // 移除 Promise
+) {
+    try {
+        const cardId = parseInt(params.id);
+        
+        const deckPath = path.join(process.cwd(), 'data', 'tarot', 'deck.json');
+        const deckData = await fs.readFile(deckPath, 'utf-8');
+        const deck = JSON.parse(deckData);
+        
+        const card = getCardInfo(cardId, deck);
+
+        if (!card) {
+            return NextResponse.json(
+                { error: 'Card not found' },
+                { status: 404 }
+            );
+        }
+
+        // 构建图片文件名
+        let fileName: string;
+        if (card.type === 'major') {
+            // 大阿尔卡纳的特殊处理
+            const majorArcanaMap: { [key: string]: string } = {
+                'The Fool': 'TheFool',
+                'The Magician': 'TheMagician',
+                'The High Priestess': 'TheHighPriestess',
+                'The Empress': 'TheEmpress',
+                'The Emperor': 'TheEmperor',
+                'The Hierophant': 'TheHierophant',
+                'The Lovers': 'TheLovers',
+                'The Chariot': 'TheChariot',
+                'Strength': 'Strength',
+                'The Hermit': 'TheHermit',
+                'Wheel of Fortune': 'WheelOfFortune',
+                'Justice': 'Justice',
+                'The Hanged Man': 'TheHangedMan',
+                'Death': 'Death',
+                'Temperance': 'Temperance',
+                'The Devil': 'TheDevil',
+                'The Tower': 'TheTower',
+                'The Star': 'TheStar',
+                'The Moon': 'TheMoon',
+                'The Sun': 'TheSun',
+                'Judgement': 'Judgement',
+                'The World': 'TheWorld'
+            };
+            fileName = majorArcanaMap[card.nameEn] || card.nameEn.replace(/ /g, '');
+        } else {
+            // 小阿尔卡纳的处理
+            const suitMap = {
+                'wands': 'Wands',
+                'cups': 'Cups',
+                'swords': 'Swords',
+                'pentacles': 'Pentacles'
+            };
+            const number = card.id.toString().padStart(2, '0');
+            const suit = suitMap[card.suit as keyof typeof suitMap];
+            fileName = `${suit}${number}`;
+        }
+
+        const imagePath = path.join(process.cwd(), 'data', 'tarot', 'cards', `${fileName}.png`);
+        console.log('Trying to read image:', imagePath);
+        
+        const imageBuffer = await fs.readFile(imagePath);
+
+        return new NextResponse(imageBuffer, {
+            headers: {
+                'Content-Type': 'image/png',
+                'Cache-Control': 'public, max-age=31536000',
+            },
+        });
+    } catch (error) {
+        console.error('Error serving card image:', error);
+        return NextResponse.json(
+            { error: 'Internal Server Error' },
+            { status: 500 }
+        );
+    }
+}
+
+/home/devbox/project/tarot-app/src/app/api/readings/route.ts:
+// src/app/api/readings/route.ts
+
+import { NextResponse } from 'next/server';
+import path from 'path';
+import fs from 'fs/promises';
+import { SPREAD_TYPES, POSITION_MEANINGS } from '@/constants/tarotConstants';
+
+// 定义牌阵类型对应的抽牌数量
+const SPREAD_CARDS_COUNT = {
+  'SINGLE': 1,
+  'THREE_CARDS': 3,
+  'CELTIC_CROSS': 10,
+  'RELATIONSHIP': 2
+} as const;
+
+// 塔罗牌信息类型
+interface TarotCard {
+  id: number;
+  name: string;
+  nameEn: string;
+  type: 'major' | 'minor';
+  suit?: string;
+  description: string;
+  uprightMeaning: string;
+  reversedMeaning: string;
+  imagePath?: string;
+  position?: string;
+  isReversed?: boolean;
+}
+
+// 从JSON加载塔罗牌数据
+async function loadTarotDeck(): Promise<TarotCard[]> {
+  const filePath = path.join(process.cwd(), 'data', 'tarot', 'deck.json');
+  const data = await fs.readFile(filePath, 'utf-8');
+  const tarotData = JSON.parse(data);
+
+  return [
+    ...tarotData.major,
+    ...tarotData.minor.wands,
+    ...tarotData.minor.cups,
+    ...tarotData.minor.swords,
+    ...tarotData.minor.pentacles
+  ];
+}
+
+// 读取图片并转换为 Base64
+async function getImageBase64(imagePath: string): Promise<string> {
+  const imageBuffer = await fs.readFile(imagePath);
+  return imageBuffer.toString('base64');
+}
+
+// 随机抽取指定数量的卡牌并添加位置信息
+async function drawCards(deck: TarotCard[], spreadType: string) {
+    const normalizedType = SPREAD_TYPES[spreadType as keyof typeof SPREAD_TYPES];
+    const count = SPREAD_CARDS_COUNT[normalizedType];
+    const positions = POSITION_MEANINGS[normalizedType];
+  
+    const shuffled = [...deck].sort(() => Math.random() - 0.5);
+  
+    return shuffled.slice(0, count).map((card, index) => {
+        return {
+            ...card,
+            isReversed: Math.random() > 0.5,
+            position: positions[index],
+            imageUrl: `/api/cards/${card.id}/image`
+        };
+    });
+}
+
+export async function POST(req: Request) {
+  try {
+    const { spreadType: rawSpreadType, question } = await req.json();
+
+    if (!(rawSpreadType in SPREAD_TYPES)) {
+      return NextResponse.json({ error: 'Invalid spread type' }, { status: 400 });
+    }
+
+    const deck = await loadTarotDeck();
+    const cards = await drawCards(deck, rawSpreadType);
+
+    return NextResponse.json({ success: true, spread: rawSpreadType, cards, timestamp: new Date().toISOString() });
+  } catch (error) {
+    console.error('Error drawing cards:', error);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
+}
+
+
+/home/devbox/project/tarot-app/src/app/layout.tsx:
+import type { Metadata } from "next";
+import { Inter } from 'next/font/google';
+import "./globals.css";
+
+const inter = Inter({ subsets: ['latin'] });
+
+export const metadata: Metadata = {
+  title: "塔罗牌阅读",
+  description: "在线塔罗牌阅读系统",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="zh">
+      <body className={inter.className}>
+        {children}
+      </body>
+    </html>
+  );
+}
+
+/home/devbox/project/tarot-app/src/app/page.tsx:
+'use client';
+
+import { useState } from 'react';
+import Image from 'next/image';
+import { SPREAD_TYPES } from '@/constants/tarotConstants';
+import type { TarotResponse } from '@/types/tarot';
+
+export default function Home() {
+  const [reading, setReading] = useState<TarotResponse | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleReadingRequest = async (spreadType: string) => {
+    try {
+      setLoading(true);
+      const response = await fetch('/api/readings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ spreadType }),
+      });
+
+      const data = await response.json();
+      setReading(data);
+    } catch (error) {
+      console.error('Error getting reading:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-8">
+      <main className="max-w-4xl mx-auto">
+        <h1 className="text-3xl font-bold text-center mb-8 dark:text-white">
+          塔罗牌阅读
+        </h1>
+
+        {/* 牌阵选择 */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          {Object.entries(SPREAD_TYPES)
+            .slice(0, 4) // 只显示中文名称的选项
+            .map(([name, type]) => (
+              <button
+                key={type}
+                onClick={() => handleReadingRequest(type)}
+                disabled={loading}
+                className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 disabled:opacity-50 dark:text-white"
+              >
+                {name}
+              </button>
+            ))}
+        </div>
+
+        {/* 加载状态 */}
+        {loading && (
+          <div className="text-center dark:text-white">
+            正在抽取塔罗牌...
+          </div>
+        )}
+
+        {/* 塔罗牌展示 */}
+        {reading && (
+          <div className="space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {reading.cards.map((card, index) => (
+                <div
+                  key={index}
+                  className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow space-y-4"
+                >
+                  <div className="relative h-64 w-full">
+                    <Image
+                      src={card.imageUrl || ''}
+                      alt={card.name}
+                      fill
+                      className={`object-contain ${
+                        card.isReversed ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </div>
+                  <div className="space-y-2 dark:text-white">
+                    <h3 className="font-bold text-lg">
+                      {card.position}: {card.name}
+                      {card.isReversed ? '（逆位）' : ''}
+                    </h3>
+                    <p className="text-sm">
+                      {card.isReversed ? card.reversedMeaning : card.uprightMeaning}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </main>
+    </div>
+  );
+}
+
+/home/devbox/project/tarot-app/src/constants/tarotConstants.ts:
+export const SPREAD_TYPES = {
+    '单牌': 'SINGLE',
+    '三牌阵': 'THREE_CARDS',
+    '凯尔特十字阵': 'CELTIC_CROSS',
+    '关系牌阵': 'RELATIONSHIP',
+    'SINGLE': 'SINGLE',
+    'THREE_CARDS': 'THREE_CARDS',
+    'CELTIC_CROSS': 'CELTIC_CROSS',
+    'RELATIONSHIP': 'RELATIONSHIP'
+  } as const;
+    
+  export const POSITION_MEANINGS = {
+    SINGLE: ['当前情况的核心'],
+    THREE_CARDS: ['过去', '现在', '未来'],
+    CELTIC_CROSS: [
+      '当前处境',
+      '当前的挑战',
+      '过去基础',
+      '即将过去',
+      '期望目标',
+      '即将到来',
+      '自我认知',
+      '环境影响',
+      '希望恐惧',
+      '最终结果'
+    ],
+    RELATIONSHIP: ['你的位置', '对方的位置']  // 添加关系牌阵的位置定义
+  } as const;
+  
+  
+
+/home/devbox/project/tarot-app/src/models/reading.ts:
+import mongoose, { Schema, Document } from 'mongoose';
+  
+  export interface IReading extends Document {
+    userQuestion: string;
+    questionType: string;
+    timeFrame: string;
+    spreadType: string;
+    confirmStatus: boolean;
+    cards: Array<{
+      name: string;
+      position: string;
+      placement: string;
+      meaning: string;
+    }>;
+    createdAt: Date;
+  }
+  
+  const ReadingSchema = new Schema({
+    userQuestion: { type: String, required: true },
+    questionType: { type: String, required: true },
+    timeFrame: { type: String, required: true },
+    spreadType: { type: String, required: true },
+    confirmStatus: { type: Boolean, default: false },
+    cards: [{
+      name: String,
+      position: String,
+      placement: String,
+      meaning: String
+    }],
+    createdAt: { type: Date, default: Date.now }
+  });
+  
+  export const Reading = mongoose.models.Reading || mongoose.model<IReading>('Reading', ReadingSchema);
+
+/home/devbox/project/tarot-app/src/services/tarotService.ts:
+import { TarotRequest, TarotResponse } from '../types/tarot';
+
+export const getTarotReading = async (
+  spreadType: TarotRequest['spreadType'], 
+  question?: string
+): Promise<TarotResponse> => {
+  try {
+    const response = await fetch('api/reading', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        spreadType,
+        question
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error getting tarot reading:', error);
+    throw error;
+  }
+};
+
+/home/devbox/project/tarot-app/src/types/globals.d.ts:
+import mongoose from 'mongoose'
+
+declare global {
+  var mongoose: {
+    conn: typeof mongoose | null
+    promise: Promise<typeof mongoose> | null
+  }
+}
+
+/home/devbox/project/tarot-app/src/types/tarot.ts:
+export interface TarotRequest {
+    spreadType: 'SINGLE' | 'THREE_CARDS' | 'CELTIC_CROSS' | 'RELATIONSHIP';
+    question?: string;
+  }
+    
+  export interface TarotResponse {
+    success: boolean;
+    spread: string;
+    cards: TarotCard[];
+    timestamp: string;
+  }
+  
+  export interface TarotCard {
+    id: number;
+    name: string;
+    nameEn: string;
+    type: 'major' | 'minor';
+    suit?: string;
+    description: string;
+    uprightMeaning: string;
+    reversedMeaning: string;
+    isReversed?: boolean;
+    position?: string;
+  }
+
+/home/devbox/project/tarot-app/src/utils/mongo.ts:
+import mongoose from 'mongoose';
+
+const MONGODB_URI = process.env.MONGODB_URI!;
+
+if (!MONGODB_URI) {
+  throw new Error('Please define the MONGODB_URI environment variable');
+}
+
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
+export async function connectDB() {
+  if (cached.conn) {
+    return cached.conn;
+  }
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGODB_URI);
+  }
+  cached.conn = await cached.promise;
+  return cached.conn;
+}

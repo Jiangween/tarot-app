@@ -1,0 +1,771 @@
+{
+    "major": [
+      {
+        "id": 0,
+        "name": "愚者",
+        "nameEn": "The Fool",
+        "type": "major",
+        "description": "一个年轻人站在悬崖边缘，背着简单的行囊，怀抱着白玫瑰，身边有一只小狗。",
+        "uprightMeaning": "新的开始、冒险、纯真、自发性、自由精神",
+        "reversedMeaning": "鲁莽、不负责任、过度冒险、愚蠢、不切实际"
+      },
+      {
+        "id": 1,
+        "name": "魔术师",
+        "nameEn": "The Magician",
+        "type": "major",
+        "description": "一位魔术师站在祭坛前，手持魔杖指向天空，桌上摆放着圣杯、宝剑、钱币和权杖。",
+        "uprightMeaning": "创造力、技能、意志力、自信、主动性",
+        "reversedMeaning": "操纵、欺骗、才能误用、自我怀疑"
+      },
+      {
+        "id": 2,
+        "name": "女祭司",
+        "nameEn": "The High Priestess",
+        "type": "major",
+        "description": "一位女祭司坐在两根柱子之间，膝上放着一本书，身后是一块帷幕。",
+        "uprightMeaning": "直觉、神秘、内在知识、精神力量",
+        "reversedMeaning": "表面性、混乱、缺乏洞察力、隐藏的动机"
+      },
+      {
+        "id": 3,
+        "name": "女皇",
+        "nameEn": "The Empress",
+        "type": "major",
+        "description": "一位华贵的女性坐在舒适的座椅上，周围是繁茂的花园。",
+        "uprightMeaning": "丰饶、创造力、母性、爱、自然",
+        "reversedMeaning": "依赖、过度保护、创造力受阻、自我怀疑"
+      },
+      {
+        "id": 4,
+        "name": "皇帝",
+        "nameEn": "The Emperor",
+        "type": "major",
+        "description": "一位威严的统治者坐在石头宝座上，手持权杖。",
+        "uprightMeaning": "权威、领导力、结构、稳定、父性",
+        "reversedMeaning": "专制、僵化、过度控制、无能"
+      },
+      {
+        "id": 5,
+        "name": "教皇",
+        "nameEn": "The Hierophant",
+        "type": "major",
+        "description": "一位宗教领袖坐在两根柱子之间，手持权杖，两位信徒跪在他面前。",
+        "uprightMeaning": "传统、精神指引、教育、信仰、道德",
+        "reversedMeaning": "叛逆、不orthodox的方法、过时的思想"
+      },
+      {
+        "id": 6,
+        "name": "恋人",
+        "nameEn": "The Lovers",
+        "type": "major",
+        "description": "一对年轻的恋人站在天使之下，象征着选择和结合。",
+        "uprightMeaning": "爱情、和谐、关系、价值观、选择",
+        "reversedMeaning": "不和谐、失衡、错误的选择、价值观冲突"
+      },
+      {
+        "id": 7,
+        "name": "战车",
+        "nameEn": "The Chariot",
+        "type": "major",
+        "description": "一位战士站在由两只狮身人面兽拉动的战车上。",
+        "uprightMeaning": "胜利、意志力、自我控制、决心、进步",
+        "reversedMeaning": "失控、阻碍、缺乏方向、侵略性"
+      },
+      {
+        "id": 8,
+        "name": "力量",
+        "nameEn": "Strength",
+        "type": "major",
+        "description": "一位女性温柔地抚摸着一只狮子，展示内在的力量。",
+        "uprightMeaning": "力量、勇气、耐心、温柔、自信",
+        "reversedMeaning": "软弱、自我怀疑、缺乏信心、滥用力量"
+      },
+      {
+        "id": 9,
+        "name": "隐士",
+        "nameEn": "The Hermit",
+        "type": "major",
+        "description": "一位老者独自站在山顶，手持明灯，寻求智慧。",
+        "uprightMeaning": "内省、寻求真理、独处、指引、智慧",
+        "reversedMeaning": "孤独、隔离、退缩、迷失方向"
+      },
+      {
+        "id": 10,
+        "name": "命运之轮",
+        "nameEn": "Wheel of Fortune",
+        "type": "major",
+        "description": "一个巨大的轮盘在转动，象征着命运的循环。",
+        "uprightMeaning": "命运、转折点、机会、变化、进展",
+        "reversedMeaning": "厄运、阻碍、不良的变化、外部控制"
+      },{
+        "id": 11,
+        "name": "正义",
+        "nameEn": "Justice",
+        "type": "major",
+        "description": "一位手持天平和剑的女性形象，象征着公平与正义。",
+        "uprightMeaning": "正义、公平、真理、因果、平衡",
+        "reversedMeaning": "不公、失衡、不诚实、否认"
+      },
+      {
+        "id": 12,
+        "name": "倒吊人",
+        "nameEn": "The Hanged Man",
+        "type": "major",
+        "description": "一个人倒挂在树上，但表情平静，象征着牺牲和洞察。",
+        "uprightMeaning": "牺牲、暂停、新视角、放下、智慧",
+        "reversedMeaning": "拖延、抵抗、无用的牺牲"
+      },
+      {
+        "id": 13,
+        "name": "死神",
+        "nameEn": "Death",
+        "type": "major",
+        "description": "骑在白马上的死神，象征着结束和新生。",
+        "uprightMeaning": "结束、转变、蜕变、新生",
+        "reversedMeaning": "停滞、抗拒改变、无法放下"
+      },
+      {
+        "id": 14,
+        "name": "节制",
+        "nameEn": "Temperance",
+        "type": "major",
+        "description": "一位天使在两个杯子之间倾倒液体，象征着平衡与融合。",
+        "uprightMeaning": "平衡、节制、耐心、调和、适度",
+        "reversedMeaning": "失衡、过度、冲突、缺乏耐心"
+      },
+      {
+        "id": 15,
+        "name": "恶魔",
+        "nameEn": "The Devil",
+        "type": "major",
+        "description": "恶魔坐在王座上，两个人被锁链束缚。",
+        "uprightMeaning": "束缚、欲望、执着、物质主义",
+        "reversedMeaning": "释放、觉醒、摆脱束缚"
+      },
+      {
+        "id": 16,
+        "name": "塔",
+        "nameEn": "The Tower",
+        "type": "major",
+        "description": "一座高塔被闪电击中，人们从塔上坠落。",
+        "uprightMeaning": "突变、崩塌、启示、解放",
+        "reversedMeaning": "避免灾难、渐进的改变"
+      },
+      {
+        "id": 17,
+        "name": "星星",
+        "nameEn": "The Star",
+        "type": "major",
+        "description": "一位女子在星空下倾倒水罐，象征着希望与启发。",
+        "uprightMeaning": "希望、启发、宁静、更新",
+        "reversedMeaning": "失望、缺乏信心、悲观"
+      },
+      {
+        "id": 18,
+        "name": "月亮",
+        "nameEn": "The Moon",
+        "type": "major",
+        "description": "月亮照耀着一条通向远方的路，两只狗在月下嚎叫。",
+        "uprightMeaning": "直觉、幻想、恐惧、潜意识",
+        "reversedMeaning": "困惑、欺骗、隐藏的敌人"
+      },
+      {
+        "id": 19,
+        "name": "太阳",
+        "nameEn": "The Sun",
+        "type": "major",
+        "description": "太阳照耀着一个骑马的孩子，象征着纯真与喜悦。",
+        "uprightMeaning": "快乐、成功、活力、光明",
+        "reversedMeaning": "暂时的快乐、过度乐观"
+      },
+      {
+        "id": 20,
+        "name": "审判",
+        "nameEn": "Judgement",
+        "type": "major",
+        "description": "天使吹响号角，人们从棺材中复活。",
+        "uprightMeaning": "重生、觉醒、救赎、召唤",
+        "reversedMeaning": "自我怀疑、错过机会"
+      },
+      {
+        "id": 21,
+        "name": "世界",
+        "nameEn": "The World",
+        "type": "major",
+        "description": "一位舞者在四个生物环绕的花环中跳舞。",
+        "uprightMeaning": "完成、整合、成就、旅程",
+        "reversedMeaning": "未完成、停滞、拖延"
+      }
+    ],
+    "minor": {
+        "wands": [
+            {
+            "id": 1,
+            "name": "权杖王牌",
+            "nameEn": "Ace of Wands",
+            "type": "minor",
+            "suit": "wands",
+            "description": "一只手从云中伸出，握着一根开花的权杖。",
+            "uprightMeaning": "新的开始、灵感、创造力、潜力",
+            "reversedMeaning": "延迟、创意受阻、缺乏动力"
+            },
+            {
+            "id": 2,
+            "name": "权杖二",
+            "nameEn": "Two of Wands",
+            "type": "minor",
+            "suit": "wands",
+            "description": "一个人站在城堡顶端，手持权杖，眺望远方。",
+            "uprightMeaning": "规划、决策、未来展望、进展",
+            "reversedMeaning": "犹豫不决、缺乏规划、恐惧前进"
+            },
+            {
+            "id": 3,
+            "name": "权杖三",
+            "nameEn": "Three of Wands",
+            "type": "minor",
+            "suit": "wands",
+            "description": "一个人背对观者，望着远处的船只。",
+            "uprightMeaning": "扩展、机会、探索、贸易",
+            "reversedMeaning": "障碍、延迟、失去机会"
+            },
+            {
+            "id": 4,
+            "name": "权杖四",
+            "nameEn": "Four of Wands",
+            "type": "minor",
+            "suit": "wands",
+            "description": "装饰着花环的四根权杖，下方是庆祝的人群。",
+            "uprightMeaning": "庆祝、和谐、家庭、完成",
+            "reversedMeaning": "不安、过渡期、缺乏支持"
+            },
+            {
+            "id": 5,
+            "name": "权杖五",
+            "nameEn": "Five of Wands",
+            "type": "minor",
+            "suit": "wands",
+            "description": "五个年轻人用权杖互相打斗。",
+            "uprightMeaning": "竞争、冲突、挑战、争论",
+            "reversedMeaning": "避免冲突、协调、和解"
+            },
+            {
+            "id": 6,
+            "name": "权杖六",
+            "nameEn": "Six of Wands",
+            "type": "minor",
+            "suit": "wands",
+            "description": "一位骑士胜利地骑马前进，周围是欢呼的人群。",
+            "uprightMeaning": "胜利、成功、公众认可、自信",
+            "reversedMeaning": "自负、傲慢、失去支持"
+            },
+            {
+            "id": 7,
+            "name": "权杖七",
+            "nameEn": "Seven of Wands",
+            "type": "minor",
+            "suit": "wands",
+            "description": "一个人站在高处，用权杖抵御下方的攻击。",
+            "uprightMeaning": "防御、坚持、挑战、勇气",
+            "reversedMeaning": "压力、退缩、放弃立场"
+            },
+            {
+            "id": 8,
+            "name": "权杖八",
+            "nameEn": "Eight of Wands",
+            "type": "minor",
+            "suit": "wands",
+            "description": "八根权杖在空中飞行。",
+            "uprightMeaning": "快速行动、进展、消息、旅行",
+            "reversedMeaning": "延迟、受阻、内部冲突"
+            },
+            {
+                "id": 9,
+                "name": "权杖九",
+                "nameEn": "Nine of Wands",
+                "type": "minor",
+                "suit": "wands",
+                "description": "一个受伤的人警惕地守护着八根权杖。",
+                "uprightMeaning": "坚持、防御、毅力、最后的努力",
+                "reversedMeaning": "精疲力竭、放弃、缺乏耐力"
+              },
+              {
+                "id": 10,
+                "name": "权杖十",
+                "nameEn": "Ten of Wands",
+                "type": "minor",
+                "suit": "wands",
+                "description": "一个人背负着十根沉重的权杖艰难前行。",
+                "uprightMeaning": "负担、责任、压力、完成",
+                "reversedMeaning": "压力过大、放下负担、委托他人"
+              },
+              {
+                "id": 11,
+                "name": "权杖侍从",
+                "nameEn": "Page of Wands",
+                "type": "minor",
+                "suit": "wands",
+                "description": "一个年轻人热情地举着一根开花的权杖。",
+                "uprightMeaning": "探索、热情、发现、可能性",
+                "reversedMeaning": "缺乏方向、优柔寡断、坏消息"
+              },
+              {
+                "id": 12,
+                "name": "权杖骑士",
+                "nameEn": "Knight of Wands",
+                "type": "minor",
+                "suit": "wands",
+                "description": "一位骑士骑着奔腾的马，手持权杖。",
+                "uprightMeaning": "行动、冒险、热情、冲动",
+                "reversedMeaning": "鲁莽、急躁、缺乏耐心"
+              },
+              {
+                "id": 13,
+                "name": "权杖王后",
+                "nameEn": "Queen of Wands",
+                "type": "minor",
+                "suit": "wands",
+                "description": "一位充满活力的女性坐在王座上，手持权杖，身边有一只黑猫。",
+                "uprightMeaning": "自信、热情、独立、社交能力",
+                "reversedMeaning": "专横、要求过高、情绪化"
+              },
+              {
+                "id": 14,
+                "name": "权杖国王",
+                "nameEn": "King of Wands",
+                "type": "minor",
+                "suit": "wands",
+                "description": "一位充满魅力的国王坐在王座上，手持开花的权杖。",
+                "uprightMeaning": "领导力、远见、创造力、魅力",
+                "reversedMeaning": "专制、傲慢、脾气暴躁"
+              }
+            ],
+        "cups": [
+            {
+                "id": 1,
+                "name": "圣杯王牌",
+                "nameEn": "Ace of Cups",
+                "type": "minor",
+                "suit": "cups",
+                "description": "一只手从云中伸出，托着一个溢出水的圣杯。",
+                "uprightMeaning": "新的感情、直觉、灵感、爱的开始",
+                "reversedMeaning": "情感封闭、创意受阻、新关系的错失"
+            },
+            {
+                "id": 2,
+                "name": "圣杯二",
+                "nameEn": "Two of Cups",
+                "type": "minor",
+                "suit": "cups",
+                "description": "一对男女交换圣杯，象征着结合与承诺。",
+                "uprightMeaning": "伙伴关系、爱情、和谐、吸引力",
+                "reversedMeaning": "关系破裂、不和谐、缺乏平衡"
+            },
+            {
+                "id": 3,
+                "name": "圣杯三",
+                "nameEn": "Three of Cups",
+                "type": "minor",
+                "suit": "cups",
+                "description": "三个女子举杯庆祝，象征着欢乐与友谊。",
+                "uprightMeaning": "庆祝、友谊、欢乐、群体活动",
+                "reversedMeaning": "过度放纵、排外、社交倦怠"
+            },
+            {
+                "id": 4,
+                "name": "圣杯四",
+                "nameEn": "Four of Cups",
+                "type": "minor",
+                "suit": "cups",
+                "description": "一个人坐在树下沉思，面前有三个杯子，一只手从云中递出第四个杯子。",
+                "uprightMeaning": "沉思、倦怠、重新评估、不满足",
+                "reversedMeaning": "新机会、觉醒、接受现实"
+            },
+            {
+                "id": 5,
+                "name": "圣杯五",
+                "nameEn": "Five of Cups",
+                "type": "minor",
+                "suit": "cups",
+                "description": "一个人披着黑斗篷，注视着三个倒下的杯子，背后还有两个直立的杯子。",
+                "uprightMeaning": "失望、遗憾、悲伤、失去",
+                "reversedMeaning": "接受、前进、找到希望"
+            },
+            {
+                "id": 6,
+                "name": "圣杯六",
+                "nameEn": "Six of Cups",
+                "type": "minor",
+                "suit": "cups",
+                "description": "两个孩子在花园中，一个给另一个递花。",
+                "uprightMeaning": "怀旧、童年记忆、纯真、给予",
+                "reversedMeaning": "沉溺过去、停滞不前、天真"
+            },
+            {
+                "id": 7,
+                "name": "圣杯七",
+                "nameEn": "Seven of Cups",
+                "type": "minor",
+                "suit": "cups",
+                "description": "七个杯子漂浮在云中，每个杯子里都有不同的幻象。",
+                "uprightMeaning": "选择、幻想、机会、梦想",
+                "reversedMeaning": "现实、清醒、做出选择"
+            },
+            {
+                "id": 8,
+                "name": "圣杯八",
+                "nameEn": "Eight of Cups",
+                "type": "minor",
+                "suit": "cups",
+                "description": "一个人在月光下离开八个摆放整齐的杯子。",
+                "uprightMeaning": "放下、转变、寻求更深的意义",
+                "reversedMeaning": "恐惧改变、安于现状、徘徊不前"
+            },
+            {
+                "id": 9,
+                "name": "圣杯九",
+                "nameEn": "Nine of Cups",
+                "type": "minor",
+                "suit": "cups",
+                "description": "一个满足的人坐在九个圣杯前面，象征着愿望实现。",
+                "uprightMeaning": "满足、愿望成真、幸福、满足感",
+                "reversedMeaning": "物质主义、空虚、过度放纵"
+              },
+              {
+                "id": 10,
+                "name": "圣杯十",
+                "nameEn": "Ten of Cups",
+                "type": "minor",
+                "suit": "cups",
+                "description": "一对夫妇和孩子在彩虹下欢庆，象征着完美的家庭幸福。",
+                "uprightMeaning": "家庭和谐、完美的爱、持久的幸福",
+                "reversedMeaning": "破碎的家庭、不和谐、价值观冲突"
+              },
+              {
+                "id": 11,
+                "name": "圣杯侍从",
+                "nameEn": "Page of Cups",
+                "type": "minor",
+                "suit": "cups",
+                "description": "一个年轻人凝视着杯中跃出的鱼，象征着感情的开始。",
+                "uprightMeaning": "感性、创意、直觉、新的感情",
+                "reversedMeaning": "情感不成熟、幻想、缺乏创意"
+              },
+              {
+                "id": 12,
+                "name": "圣杯骑士",
+                "nameEn": "Knight of Cups",
+                "type": "minor",
+                "suit": "cups",
+                "description": "一位骑士骑着白马，优雅地捧着圣杯前行。",
+                "uprightMeaning": "浪漫、魅力、追求理想、艺术气质",
+                "reversedMeaning": "情感欺骗、虚幻的承诺、失望"
+              },
+              {
+                "id": 13,
+                "name": "圣杯王后",
+                "nameEn": "Queen of Cups",
+                "type": "minor",
+                "suit": "cups",
+                "description": "一位温柔的女性坐在海边的王座上，凝视着精美的圣杯。",
+                "uprightMeaning": "同理心、关怀、直觉、情感智慧",
+                "reversedMeaning": "情感依赖、直觉混乱、情绪化"
+              },
+              {
+                "id": 14,
+                "name": "圣杯国王",
+                "nameEn": "King of Cups",
+                "type": "minor",
+                "suit": "cups",
+                "description": "一位成熟的国王坐在汹涌的海面上，平静地手持圣杯。",
+                "uprightMeaning": "情感平衡、同理心、智慧、外交手腕",
+                "reversedMeaning": "情感操纵、缺乏同理心、冷漠"
+              }
+            ],
+        "swords": [
+            {
+                "id": 1,
+                "name": "宝剑王牌",
+                "nameEn": "Ace of Swords",
+                "type": "minor",
+                "suit": "swords",
+                "description": "一只手从云中伸出，握着一把宝剑，剑尖上戴着王冠。",
+                "uprightMeaning": "突破、清晰、真理、胜利、新思维",
+                "reversedMeaning": "混乱、缺乏清晰度、破坏性想法"
+            },
+            {
+                "id": 2,
+                "name": "宝剑二",
+                "nameEn": "Two of Swords",
+                "type": "minor",
+                "suit": "swords",
+                "description": "一位蒙眼女子手持两把交叉的剑，背景是海洋和满月。",
+                "uprightMeaning": "选择、平衡、决策、僵局",
+                "reversedMeaning": "优柔寡断、开放、紧张释放"
+            },
+            {
+                "id": 3,
+                "name": "宝剑三",
+                "nameEn": "Three of Swords",
+                "type": "minor",
+                "suit": "swords",
+                "description": "三把剑刺穿一颗红心，背景是暴风雨的天空。",
+                "uprightMeaning": "心碎、悲伤、痛苦、背叛",
+                "reversedMeaning": "恢复、宽恕、释放痛苦"
+            },
+            {
+                "id": 4,
+                "name": "宝剑四",
+                "nameEn": "Four of Swords",
+                "type": "minor",
+                "suit": "swords",
+                "description": "一位骑士躺在石棺上休息，头顶悬挂着一把剑。",
+                "uprightMeaning": "休息、恢复、冥想、撤退",
+                "reversedMeaning": "焦虑、不安、重返生活"
+            },
+            {
+                "id": 5,
+                "name": "宝剑五",
+                "nameEn": "Five of Swords",
+                "type": "minor",
+                "suit": "swords",
+                "description": "一个人得意地收集战利品，而失败者黯然离去。",
+                "uprightMeaning": "冲突、失败、羞辱、不公平竞争",
+                "reversedMeaning": "和解、放下、重新开始"
+            },
+            {
+                "id": 6,
+                "name": "宝剑六",
+                "nameEn": "Six of Swords",
+                "type": "minor",
+                "suit": "swords",
+                "description": "一个船夫载着乘客渡过平静的水面，船上插着六把剑。",
+                "uprightMeaning": "过渡、离开、移动、治愈",
+                "reversedMeaning": "停滞、无法前进、过去的包袱"
+            },
+            {
+                "id": 7,
+                "name": "宝剑七",
+                "nameEn": "Seven of Swords",
+                "type": "minor",
+                "suit": "swords",
+                "description": "一个人偷偷携带五把剑离开营地，留下两把剑。",
+                "uprightMeaning": "欺骗、策略、秘密行动",
+                "reversedMeaning": "坦白、后悔、被发现"
+            },
+            {
+                "id": 8,
+                "name": "宝剑八",
+                "nameEn": "Eight of Swords",
+                "type": "minor",
+                "suit": "swords",
+                "description": "一位被蒙眼绑住的女子被八把剑围绕。",
+                "uprightMeaning": "束缚、限制、受困、自我设限",
+                "reversedMeaning": "释放、新视角、自由"
+            },
+            {
+                "id": 9,
+                "name": "宝剑九",
+                "nameEn": "Nine of Swords",
+                "type": "minor",
+                "suit": "swords",
+                "description": "一个人在夜晚惊醒，九把剑挂在墙上。",
+                "uprightMeaning": "焦虑、噩梦、忧虑、精神压力",
+                "reversedMeaning": "希望、释放恐惧、走出阴霾"
+            },
+            {
+                "id": 10,
+                "name": "宝剑十",
+                "nameEn": "Ten of Swords",
+                "type": "minor",
+                "suit": "swords",
+                "description": "一个人倒在地上，背上插着十把剑，远处黎明将至。",
+                "uprightMeaning": "结束、失败、痛苦、新的开始",
+                "reversedMeaning": "恢复、重生、解脱"
+            },
+            {
+                "id": 11,
+                "name": "宝剑侍从",
+                "nameEn": "Page of Swords",
+                "type": "minor",
+                "suit": "swords",
+                "description": "一个年轻人站在风中，高举宝剑观察。",
+                "uprightMeaning": "好奇心、敏锐、观察、新想法",
+                "reversedMeaning": "仓促行动、缺乏准备、轻率"
+            },
+            {
+                "id": 12,
+                "name": "宝剑骑士",
+                "nameEn": "Knight of Swords",
+                "type": "minor",
+                "suit": "swords",
+                "description": "一位骑士骑着战马冲锋，手持宝剑。",
+                "uprightMeaning": "行动迅速、果断、智慧、勇气",
+                "reversedMeaning": "鲁莽、攻击性、不计后果"
+            },
+            {
+                "id": 13,
+                "name": "宝剑王后",
+                "nameEn": "Queen of Swords",
+                "type": "minor",
+                "suit": "swords",
+                "description": "一位独立的女性坐在王座上，手持宝剑指向天空。",
+                "uprightMeaning": "独立、清晰、智慧、直接",
+                "reversedMeaning": "刻薄、苦涩、冷酷"
+            },
+            {
+                "id": 14,
+                "name": "宝剑国王",
+                "nameEn": "King of Swords",
+                "type": "minor",
+                "suit": "swords",
+                "description": "一位威严的国王坐在王座上，手持直立的宝剑。",
+                "uprightMeaning": "理性、权威、真理、正义",
+                "reversedMeaning": "滥用权力、残酷、独裁"
+            }
+        ],
+        "pentacles": [
+            {
+                "id": 1,
+                "name": "钱币王牌",
+                "nameEn": "Ace of Pentacles",
+                "type": "minor",
+                "suit": "pentacles",
+                "description": "一只手从云中伸出，托着一枚金币，下方是一座美丽的花园。",
+                "uprightMeaning": "新的机会、繁荣、物质回报、实际的开始",
+                "reversedMeaning": "错失机会、物质损失、贪婪"
+            },
+            {
+                "id": 2,
+                "name": "钱币二",
+                "nameEn": "Two of Pentacles",
+                "type": "minor",
+                "suit": "pentacles",
+                "description": "一个人在杂耍般地平衡两枚钱币，背景是波涛汹涌的海洋。",
+                "uprightMeaning": "平衡、适应性、时间管理、优先级",
+                "reversedMeaning": "失衡、混乱、压力过大"
+            },
+            {
+                "id": 3,
+                "name": "钱币三",
+                "nameEn": "Three of Pentacles",
+                "type": "minor",
+                "suit": "pentacles",
+                "description": "三个人在教堂中讨论建筑计划，象征着合作与专业技能。",
+                "uprightMeaning": "团队合作、技能、认可、学习",
+                "reversedMeaning": "缺乏合作、粗心、低质量"
+            },
+            {
+                "id": 4,
+                "name": "钱币四",
+                "nameEn": "Four of Pentacles",
+                "type": "minor",
+                "suit": "pentacles",
+                "description": "一个人紧紧抱着一枚钱币，脚下和头顶各放着钱币。",
+                "uprightMeaning": "安全感、保守、占有、控制",
+                "reversedMeaning": "贪婪、失去安全感、放手"
+            },
+            {
+                "id": 5,
+                "name": "钱币五",
+                "nameEn": "Five of Pentacles",
+                "type": "minor",
+                "suit": "pentacles",
+                "description": "两个贫困的人在风雪中经过教堂彩窗。",
+                "uprightMeaning": "困难、贫困、孤立、健康问题",
+                "reversedMeaning": "恢复、帮助、精神富足"
+            },
+            {
+                "id": 6,
+                "name": "钱币六",
+                "nameEn": "Six of Pentacles",
+                "type": "minor",
+                "suit": "pentacles",
+                "description": "一个富人施舍钱币给跪着的穷人，手中持着天平。",
+                "uprightMeaning": "慷慨、分享、接受帮助、公平",
+                "reversedMeaning": "自私、债务、不平等"
+            },
+            {
+                "id": 7,
+                "name": "钱币七",
+                "nameEn": "Seven of Pentacles",
+                "type": "minor",
+                "suit": "pentacles",
+                "description": "一个园丁靠在锄头上，观察他种植的作物。",
+                "uprightMeaning": "评估、耐心、投资、努力的回报",
+                "reversedMeaning": "缺乏进展、工作无果、重新评估"
+            },
+            {
+                "id": 8,
+                "name": "钱币八",
+                "nameEn": "Eight of Pentacles",
+                "type": "minor",
+                "suit": "pentacles",
+                "description": "一个工匠专注地雕刻钱币，象征着技艺的精进。",
+                "uprightMeaning": "技能提升、专注、细节、勤奋",
+                "reversedMeaning": "完美主义、缺乏动力、低质量工作"
+            },
+            {
+                "id": 9,
+                "name": "钱币九",
+                "nameEn": "Nine of Pentacles",
+                "type": "minor",
+                "suit": "pentacles",
+                "description": "一位优雅的女士站在丰收的花园中，手上栖息着一只猎鹰。",
+                "uprightMeaning": "独立、奢华、自律、成就",
+                "reversedMeaning": "虚荣、物质依赖、失去独立"
+            },
+            {
+                "id": 10,
+                "name": "钱币十",
+                "nameEn": "Ten of Pentacles",
+                "type": "minor",
+                "suit": "pentacles",
+                "description": "一个富有的家庭在城堡前，周围有狗和仆人。",
+                "uprightMeaning": "财富、家族、传承、安全",
+                "reversedMeaning": "家族问题、财产损失、不安全感"
+            },
+            {
+                "id": 11,
+                "name": "钱币侍从",
+                "nameEn": "Page of Pentacles",
+                "type": "minor",
+                "suit": "pentacles",
+                "description": "一个年轻人专注地研究手中的钱币。",
+                "uprightMeaning": "学习、新机会、务实、勤奋",
+                "reversedMeaning": "缺乏目标、懒惰、机会浪费"
+            },
+            {
+                "id": 12,
+                "name": "钱币骑士",
+                "nameEn": "Knight of Pentacles",
+                "type": "minor",
+                "suit": "pentacles",
+                "description": "一位骑士骑在静止的马上，仔细端详手中的钱币。",
+                "uprightMeaning": "可靠、勤勉、耐心、保守",
+                "reversedMeaning": "停滞、完美主义、工作狂"
+            },
+            {
+                "id": 13,
+                "name": "钱币王后",
+                "nameEn": "Queen of Pentacles",
+                "type": "minor",
+                "suit": "pentacles",
+                "description": "一位富有的女性坐在繁茂的花园中，怀抱一枚金币。",
+                "uprightMeaning": "富足、实用、滋养、慷慨",
+                "reversedMeaning": "物质主义、自私、嫉妒"
+            },
+            {
+                "id": 14,
+                "name": "钱币国王",
+                "nameEn": "King of Pentacles",
+                "type": "minor",
+                "suit": "pentacles",
+                "description": "一位成功的国王坐在王座上，周围是繁荣的景象。",
+                "uprightMeaning": "富有、实业家、稳定、可靠",
+                "reversedMeaning": "贪婪、物质执着、缺乏远见"
+            }
+        ]
+    }
+  }
